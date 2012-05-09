@@ -16,6 +16,8 @@ module DataMapper
     # @since 1.0.1
     #
     def as_json(options = {})
+      return as_hash(options) if respond_to?(:as_hash)
+
       options = {} if options.nil?
       result  = {}
 
