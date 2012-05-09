@@ -72,4 +72,9 @@ describe DataMapper::Serializer, '#as_json' do
   it "serializes Discriminator types as strings" do
     Motorcycle.new.as_json[:type].should == "Motorcycle"
   end
+
+  it "should use #as_hash when available" do
+    BoringGuy.new.as_json[:name].should == "Bob"
+    Magician.new.as_json[:name].should == "The Magical Maestro"
+  end
 end
